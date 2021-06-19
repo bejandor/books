@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="{% static 'styles/books.css' %}" rel="stylesheet">
+
+    <title>Book-store</title>
+</head>
+<body>
+    <header >
+        <h1 >Книжный магазин </h1>
+    </header>
+    
+    <nav>
+        <a href = "{% url 'index' %}">Добавить книгу</a> 
+        <a href = " {% url 'catalog' %} ">Каталог книг</a> 
+        <a href = "{% url 'about' %}">О нас</a> 
+    </nav> 
+
+    <section class="add_book_container">
+        <div class="add_book_form">
+            <h2 class="form_text">Добавить книгу</h2>
+                <form action="{% url 'add-book' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form_text">Заголовок  </div>  
+                        <input type="text" size="40" name="title"/>
+        
+                    <div class="form_text"> Подзагловок </div> 
+                        <input type="text"size="40" name="subtitle"/>
+        
+                    <div class="form_text">Жанр  </div>  
+                        <input type="text" size="40" name="genre"/>
+        
+                    <div class="form_text"> Автор  </div> 
+                        <input type="text" size="40" name="author"/>
+        
+                    <div class="form_text"> Год публикации </div> 
+                        <input type="number"size="4" name="year"/>
+        
+                    <div class="form_text"> Описание </div>
+                        <textarea name="description"name="describtion"></textarea>
+        
+                    <div class="form_text"> Цена   </div>  
+                        <input type="number" size="40" name="price"/><br><br>
+        
+                    <button type="submit" >Добавить</button> 
+                    <button type="reset">Очистить</button>
+                </form>
+        </div>
+    </section>
+    
+</body>
+</html>
+
